@@ -1,17 +1,16 @@
-let toDoButton = document.getElementById("add");
-let toDoContainer = document.getElementById("toDoContainer");
-let inputField = document.getElementById("inputField");
+const addNewTaskBtn = document.getElementById("task-button");
+const taskContainer = document.getElementById("list-container");
+const inputField = document.getElementById("task");
 
-toDoButton.addEventListener("click", function () {
-  var paragraph = document.createElement("p");
-  paragraph.classList.add("paragraph-styling"); // applies css class
-  paragraph.innerText = inputField.value;
-  toDoContainer.appendChild(paragraph);
-  inputField.value = ""; // removes input text once an option is added
-  paragraph.addEventListener("click", function () {
-    paragraph.style.textDecoration = "line-through";
-  }); //double click removes the task
-  paragraph.addEventListener("dblclick", function () {
-    toDoContainer.removeChild(paragraph);
-  });
-});
+addNewTaskBtn.addEventListener("click", function() {
+  const newTask = document.createElement("li");
+  newTask.innerText = inputField.value;
+  taskContainer.appendChild(newTask);
+  inputField.value = "";
+  newTask.addEventListener("click", function() {
+    newTask.style.textDecoration = "line-through";
+  })
+  newTask.addEventListener("dblclick", function() {
+    taskContainer.removeChild(newTask);
+})
+})
